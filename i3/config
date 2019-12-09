@@ -16,7 +16,7 @@ set $mod Mod4
 font pango:monospace 8
 
 # wallpaper
-exec_always feh --bg-scale ~/Pictures/spider.jpg
+exec_always feh --bg-scale ~/Pictures/spider.jpg ~/Pictures/cthulhu.jpg
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -33,7 +33,7 @@ exec_always feh --bg-scale ~/Pictures/spider.jpg
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec rxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -104,40 +104,40 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-set $ws9 9
-set $ws10 10
+#set $ws1 1
+#set $ws2 2
+#set $ws3 3
+#set $ws4 4
+#set $ws5 5
+#set $ws6 6
+#set $ws7 7
+#set $ws8 8
+#set $ws9 9
+#set $ws10 10
 
 # switch to workspace
-bindsym $mod+1 workspace $ws1 
-bindsym $mod+2 workspace $ws2 
-bindsym $mod+3 workspace $ws3 
-bindsym $mod+4 workspace $ws4 
-bindsym $mod+5 workspace $ws5 
-bindsym $mod+6 workspace $ws6 
-bindsym $mod+7 workspace $ws7 
-bindsym $mod+8 workspace $ws8 
-bindsym $mod+9 workspace $ws9 
-bindsym $mod+0 workspace $ws10 
+bindsym $mod+1 workspace 1 
+bindsym $mod+2 workspace 2 
+bindsym $mod+3 workspace 3 
+bindsym $mod+4 workspace 4 
+bindsym $mod+5 workspace 5 
+bindsym $mod+6 workspace 6 
+bindsym $mod+7 workspace 7 
+bindsym $mod+8 workspace 8 
+bindsym $mod+9 workspace 9 
+bindsym $mod+0 workspace 10 
                          
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10 
+bindsym $mod+Shift+1 move container to workspace 1 
+bindsym $mod+Shift+2 move container to workspace 2 
+bindsym $mod+Shift+3 move container to workspace 3 
+bindsym $mod+Shift+4 move container to workspace 4 
+bindsym $mod+Shift+5 move container to workspace 5 
+bindsym $mod+Shift+6 move container to workspace 6 
+bindsym $mod+Shift+7 move container to workspace 7 
+bindsym $mod+Shift+8 move container to workspace 8 
+bindsym $mod+Shift+9 move container to workspace 9 
+bindsym $mod+Shift+0 move container to workspace 10 
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -188,21 +188,28 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 ## Lockscreen ##
 
 # betterscreen -- use last cached image
-exec --no-startup-id betterlockscreen -w
+#exec --no-startup-id betterlockscreen -w
+#exec --no-startup-id source ~/.fehbg
+
 # launch betterscreen and suspend on lid-close
-exec --no-startup-ip xss-lock -- betterlockscreen -s
+#exec --no-startup-ip xss-lock -- betterlockscreen -s
+exec --no-startup-ip xss-lock -- gllock
 
 # Use betterscreen to lock
-bindsym $mod+shift+x exec betterlockscreen --lock dim
+#bindsym $mod+shift+x exec betterlockscreen --lock dim
 
 # Antela's Config
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 
 mode "$mode_system" {
-    bindsym l exec betterlockscreen --lock dim, mode "default"
+    bindsym l exec betterlockscreen -l dim, mode "default"
+    #bindsym l exec gllock, mode "default"
     bindsym e exec i3-msg exit, mode "default"
     bindsym s exec betterlockscreen -s, mode "default"
-    bindsym h exec betterlockscreen --lock dim && systemctl suspend, mode "default"
+    #bindsym s exec gllock, mode "default"
+    bindsym h exec systemctl suspend, mode "default"
+    #bindsym h exec betterlockscreen -l dim && systemctl suspend, mode "default"
+    #bindsym h exec gllock && systemctl suspend, mode "default"
     bindsym r exec systemctl reboot, mode "default"
     bindsym Shift+s exec systemctl poweroff
 
@@ -217,7 +224,10 @@ bindsym $mod+o mode "$mode_system"
 exec --no-startup-id /usr/bin/compton --config ~/.compton.conf
 
 # Dual Monitors
-exec --no-startup-id xrandr --output eDP-1-1 --auto --left-of HDMI-0
+exec --no-startup-id xrandr --output eDP-1-1 --auto --right-of HDMI-0
 
 #Switch workspace
 bindsym $mod+m move workspace to output left
+
+#Enable tap to click (touchpad)
+exec --no-startup-id xinput set-prop 16 337 1
