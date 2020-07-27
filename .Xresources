@@ -43,12 +43,12 @@ URxvt*inheritPixmap: False
 *.color11:      #D48B1E
 
 ! blue
-*.color4:       #00538A
-*.color12:      #00538A
+*.color4:       #477A9C
+*.color12:      #477A9C
 
 ! magenta
-*.color5:       #861E3A
-*.color13:      #861E3A
+*.color5:       #B2284D
+*.color13:      #B2284D
 
 ! cyan
 *.color6:       #559B71
