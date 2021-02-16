@@ -1,11 +1,16 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" One day, I will put something here.
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'iamcco/markdown-preview.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -16,7 +21,7 @@ set number
 
 "Set spaces
 set tabstop=2
-set softtabstop=2
+"set softtabstop=2
 set shiftwidth=2
 set noexpandtab
 
@@ -34,13 +39,13 @@ set background=dark
 " put this line first in ~/.vimrc
 set nocompatible | filetype indent plugin on | syn on
 
+" VAM
 fun! EnsureVamIsOnDisk(plugin_root_dir)
   let vam_autoload_dir = a:plugin_root_dir.'/vim-addon-manager/autoload'
   if isdirectory(vam_autoload_dir)
     return 1
   else
     if 1 == confirm("Clone VAM into ".a:plugin_root_dir."?","&Y\n&N")
-      " I'm sorry having to add this reminder. Eventually it'll pay off.
       call confirm("Remind yourself that most plugins ship with ".
                   \"documentation (README*, doc/*.txt). It is your ".
                   \"first source of knowledge. If you can't find ".
@@ -49,8 +54,6 @@ fun! EnsureVamIsOnDisk(plugin_root_dir)
       call mkdir(a:plugin_root_dir, 'p')
       execute '!git clone --depth=1 git://github.com/MarcWeber/vim-addon-manager '.
                   \       shellescape(a:plugin_root_dir, 1).'/vim-addon-manager'
-      " VAM runs helptags automatically when you install or update
-      " plugins
       exec 'helptags '.fnameescape(a:plugin_root_dir.'/vim-addon-manager/doc')
     endif
     return isdirectory(vam_autoload_dir)
@@ -58,16 +61,6 @@ fun! EnsureVamIsOnDisk(plugin_root_dir)
 endfun
 
 fun! SetupVAM()
-  " Set advanced options like this:
-  " let g:vim_addon_manager = {}
-  " let g:vim_addon_manager.key = value
-  "     Pipe all output into a buffer which gets written to disk
-  " let g:vim_addon_manager.log_to_buf =1
-
-  " Example: drop git sources unless git is in PATH. Same plugins can
-  " be installed from www.vim.org. Lookup MergeSources to get more control
-  " let g:vim_addon_manager.drop_git_sources = !executable('git')
-  " let g:vim_addon_manager.debug_activation = 1
 
   " VAM install location:
   let c = get(g:, 'vim_addon_manager', {})
@@ -81,28 +74,15 @@ fun! SetupVAM()
 
   " Tell VAM which plugins to fetch & load:
   call vam#ActivateAddons([], {'auto_install' : 0})
-  " sample: call vam#ActivateAddons(['pluginA','pluginB', ...], {'auto_install' : 0})
-  " Also See "plugins-per-line" below
 
-  " Addons are put into plugin_root_dir/plugin-name directory
-  " unless those directories exist. Then they are activated.
-  " Activating means adding addon dirs to rtp and do some additional
-  " magic
-
-  " How to find addon names?
-  " - look up source from pool
-  " - (<c-x><c-p> complete plugin names):
-  " You can use name rewritings to point to sources:
-  "    ..ActivateAddons(["github:foo", .. => github://foo/vim-addon-foo
-  "    ..ActivateAddons(["github:user/repo", .. => github://user/repo
-  " Also see section "2.2. names of addons and addon sources" in VAM's documentation
 	ActivateAddons vim-snippets snipmate
+	
 endfun
 call SetupVAM()
-" experimental [E1]: load plugins lazily depending on filetype, See
-" NOTES
-" experimental [E2]: run after gui has been started (gvim) [3]
-" option1:  au VimEnter * call SetupVAM()
-" option2:  au GUIEnter * call SetupVAM()
-" See BUGS sections below [*]
-" Vim 7.0 users see BUGS section [3]
+
+set rtp+=/usr/local/bin/powerline/powerline/bindings/vim/
+set laststatus=2
+
+" Pathogen
+execute pathogen#infect()
+
