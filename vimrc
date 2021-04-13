@@ -17,12 +17,13 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 "Set Line Number
-set number
+"set number
+set relativenumber
 
 "Set spaces
-set tabstop=2
-"set softtabstop=2
-set shiftwidth=2
+set tabstop=8
+set softtabstop=8
+set shiftwidth=8
 set noexpandtab
 
 "Color
