@@ -17,8 +17,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 "Set Line Number
-"set number
-set relativenumber
+set number relativenumber
 
 "Set spaces
 set tabstop=8
