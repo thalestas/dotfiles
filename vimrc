@@ -14,6 +14,7 @@ Plugin 'iamcco/markdown-preview.nvim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -33,6 +34,7 @@ set t_Co=256
 
 "Syntax highlighting
 syntax on
+let python_highlight_all=1
 
 "Set color
 let g:gruvbox_contrast_dark = 'hard'
