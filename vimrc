@@ -11,7 +11,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'iamcco/markdown-preview.nvim'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'tmhedberg/SimpylFold'
 
 " All of your Plugins must be added before the following line
@@ -27,10 +27,6 @@ set softtabstop=8
 set shiftwidth=8
 set noexpandtab
 
-" Enable folding
-"set foldmethod=indent
-"set foldlevel=99
-
 "Color
 set t_Co=256
 
@@ -41,6 +37,10 @@ syntax on
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 set background=dark
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " put this line first in ~/.vimrc
 set nocompatible | filetype indent plugin on | syn on
