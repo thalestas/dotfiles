@@ -11,6 +11,8 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'iamcco/markdown-preview.nvim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tmhedberg/SimpylFold'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -24,6 +26,10 @@ set tabstop=8
 set softtabstop=8
 set shiftwidth=8
 set noexpandtab
+
+" Enable folding
+"set foldmethod=indent
+"set foldlevel=99
 
 "Color
 set t_Co=256
