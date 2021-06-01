@@ -15,6 +15,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'scrooloose/nerdtree'
+Plugin 'morhetz/gruvbox'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,6 +47,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" Fix backspace
+""""""""""""""""""""""""""""""""""""""""""""""""""
+:set backspace=indent,eol,start
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -101,14 +107,10 @@ fun! SetupVAM()
   " Tell VAM which plugins to fetch & load:
   call vam#ActivateAddons([], {'auto_install' : 0})
 
-	ActivateAddons vim-snippets snipmate
-	
 endfun
 call SetupVAM()
 
 set rtp+=/usr/local/bin/powerline/powerline/bindings/vim/
 set laststatus=2
 
-" Pathogen
-execute pathogen#infect()
 
