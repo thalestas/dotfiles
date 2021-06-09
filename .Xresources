@@ -1,3 +1,5 @@
+#include ".Xresources.d/snazzy"
+
 ! resolution & colors
 Xft.dpi: 82 
 Xft.antialias: true
@@ -22,48 +24,12 @@ URxvt.urgentOnBell: true
 
 !-------------------------------------------------------------------------------
 ! fonts
-URxvt*font: xft:DejaVu Sans Mono for Powerline:size=11
-
+!URxvt*font: xft:DejaVu Sans Mono for Powerline:size=11
+URxvt*font: xft:DejaVu Sans Mono for Powerline:style=Bold:size=11
+!URxvt*font: xft:Inconsolata for Powerline:style:BoldForPowerline:size=15
 !-------------------------------------------------------------------------------
 URxvt*saveLines: 10000
 URxvt*scrollBar: false
 
 URxvt*cursorColor: white
 URxvt*cursorColor2: #aaaaaa
-
-! special
-*.foreground:   #f2f2f2
-*.background:   #1c1b1a
-*.cursorColor:  #aaaaaa
-
-! black
-*.color0:       #141413
-*.color8:       #000000
-
-! red
-*.color1:       #793C45
-*.color9:       #793C45
-
-! green
-*.color2:       #537200
-*.color10:      #537200
-
-! yellow
-*.color3:       #D48B1E
-*.color11:      #D48B1E
-
-! blue
-*.color4:       #477A9C
-*.color12:      #477A9C
-
-! magenta
-*.color5:       #B1526C
-*.color13:      #B1526C
-
-! cyan
-*.color6:       #559B71
-*.color14:      #559B71
-
-! white
-*.color7:       #c9cec3
-*.color15:      #ffffff
